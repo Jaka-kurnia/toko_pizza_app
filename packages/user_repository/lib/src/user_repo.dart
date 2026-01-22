@@ -1,3 +1,5 @@
+import 'models/models.dart';
+
 abstract class UserRepository {
   Stream<MyUser> get user;
 
@@ -5,5 +7,5 @@ abstract class UserRepository {
 
   Future<void> setUserData(MyUser myUser);
   Future<void> signin(String email, String password);
-  Future<void> signOut();
+  Future<void> logOut();
 }
