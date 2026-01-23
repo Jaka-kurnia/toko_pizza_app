@@ -1,9 +1,20 @@
+// Entity MyUserEntity
+// Digunakan sebagai representasi data user untuk penyimpanan database (Firestore)
 class MyUserEntity {
+
+  // ID user (UID dari Firebase)
   String userId;
+
+  // Email user
   String email;
+
+  // Nama user
   String name;
+
+  // Status apakah user memiliki cart yang aktif
   bool hasActiveCart;
 
+  // Constructor utama MyUserEntity
   MyUserEntity({
     required this.userId,
     required this.email,
@@ -11,6 +22,8 @@ class MyUserEntity {
     required this.hasActiveCart,
   });
 
+  // Mengubah MyUserEntity menjadi Map
+  // Digunakan saat menyimpan data ke Firestore
   Map<String, Object?> toDocument() {
     return {
       'userId': userId,
@@ -20,6 +33,8 @@ class MyUserEntity {
     };
   }
 
+  // Membuat MyUserEntity dari data Firestore (Map)
+  // Digunakan saat mengambil data dari database
   static MyUserEntity fromDocument(Map<String, dynamic> doc) {
     return MyUserEntity(
       userId: doc['userId'],

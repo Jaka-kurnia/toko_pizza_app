@@ -1,11 +1,23 @@
+// Import entity MyUserEntity (representasi data untuk database)
 import '../entities/entities.dart';
 
+// Model MyUser
+// Digunakan sebagai representasi data user di layer aplikasi
 class MyUser {
+
+  // ID user (biasanya UID dari Firebase)
   String userId;
+
+  // Email user
   String email;
+
+  // Nama user
   String name;
+
+  // Penanda apakah user memiliki cart yang aktif
   bool hasActiveCart;
 
+  // Constructor utama MyUser
   MyUser({
     required this.userId,
     required this.email,
@@ -13,6 +25,8 @@ class MyUser {
     required this.hasActiveCart,
   });
 
+  // Object MyUser kosong
+  // Digunakan saat user belum login
   static final empty = MyUser(
     userId: '',
     email: '',
@@ -20,6 +34,7 @@ class MyUser {
     hasActiveCart: false,
   );
 
+  // Mengubah MyUser (Model) menjadi MyUserEntity (untuk disimpan ke database)
   MyUserEntity toEntity() {
     return MyUserEntity(
       userId: userId,
@@ -29,6 +44,7 @@ class MyUser {
     );
   }
 
+  // Mengubah MyUserEntity (data dari database) menjadi MyUser (Model)
   static MyUser fromEntity(MyUserEntity entity) {
     return MyUser(
       userId: entity.userId,
@@ -38,6 +54,7 @@ class MyUser {
     );
   }
 
+  // Override toString untuk memudahkan debugging dan logging
   @override
   String toString() {
     return 'MyUser { userId: $userId, email: $email, name: $name, hasActiveCart: $hasActiveCart }';
